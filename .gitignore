@@ -1,3 +1,9 @@
+# Personal Claude Code config. CLAUDE.md IS tracked on purpose — it's the
+# contributor guide, and a course about Claude Code should ship a real one.
+# These two are per-machine and would leak local paths and permission history.
+.claude/settings.local.json
+CLAUDE.local.md
+
 # OS/editor junk
 .DS_Store
 Thumbs.db
