@@ -1,0 +1,27 @@
+# OS/editor junk
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Future PDF/build outputs (generated, not source)
+/build/
+/dist/
+*.pdf.tmp
+
+# Production material — kept locally, never published to the learner repo.
+# Instructor notes hold filming cues and runtimes; the distribution plan is a
+# working document with open business decisions in it.
+/docs/instructor/
+/docs/distribution-plan.md
+
+# Video and editing assets never belong here
+*.mp4
+*.mov
+*.prproj
+*.fcpbundle
+
+# Student and enrollment data
+/students/
+*.csv
