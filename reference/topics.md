@@ -12,6 +12,7 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 | Write prompts that work | [2 — Prompt engineering](../modules/module-02-prompt-engineering.md) |
 | Install it, or pick a surface | [3 — Installing everywhere](../modules/module-03-installing-everywhere.md) |
 | Understand the tools and sandboxing | [4 — Agentic loop and tools](../modules/module-04-agentic-loop-tools.md) |
+| Give Claude a finish line it keeps working toward | [2 — `/goal`](../modules/module-02-prompt-engineering.md) |
 | Stop it asking permission constantly | [5 — Permissions and memory](../modules/module-05-permissions-memory-config.md) |
 | Make it follow my project's conventions | [5 — CLAUDE.md](../modules/module-05-permissions-memory-config.md) |
 | Work on a real project without losing my mind | [6 — Planning real projects](../modules/module-06-planning-real-projects.md) |
@@ -20,12 +21,16 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 | Add capability without building it | [8 — Plugins](../modules/module-08-plugin-ecosystem.md) |
 | Connect my issue tracker, database, or monitoring | [9 — MCP](../modules/module-09-mcp.md) |
 | Run many agents at once | [10 — Orchestration](../modules/module-10-subagents-orchestration.md) |
+| Use it inside VS Code or JetBrains | [11 — Your IDE](../modules/module-11-every-surface.md) |
 | Use it away from my terminal | [11 — Every surface](../modules/module-11-every-surface.md) |
+| Run it from a script, with no terminal | [12 — Headless mode](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
 | Put it in CI, or review PRs | [12 — CI/CD and review](../modules/module-12-cicd-review-security.md) |
 | Use it on infrastructure, or roll it out at work | [13 — Infra, cloud, enterprise](../modules/module-13-infrastructure-cloud-enterprise.md) |
 | Build a product on it | [14 — Agent SDK](../modules/module-14-agent-sdk.md) |
 | Build something to show for it | [15 — Capstone](../modules/module-15-capstone.md) |
 | Keep up as it changes | [16 — Staying sharp](../modules/module-16-staying-sharp.md) |
+| **Fix something that's broken** | [Troubleshooting](troubleshooting.md) |
+| **Get faster, cheaper, and sharper at it** | [Power moves](power-moves.md) |
 
 ---
 
@@ -33,8 +38,6 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 
 | Topic | Module |
 |---|---|
-| `.claude/` directory | [5](../modules/module-05-permissions-memory-config.md) |
-| `.mcp.json` and MCP scopes | [9](../modules/module-09-mcp.md) |
 | Admin setup, managed settings | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
 | Agent loop (concept) | [1](../modules/module-01-agentic-era.md) |
 | Agent loop (SDK message lifecycle) | [14](../modules/module-14-agent-sdk.md) |
@@ -46,6 +49,8 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 | Authentication, account types | [3](../modules/module-03-installing-everywhere.md) |
 | Auto memory | [5](../modules/module-05-permissions-memory-config.md) |
 | Auto mode | [5](../modules/module-05-permissions-memory-config.md) |
+| Auto-compaction thrashing | [Troubleshooting](troubleshooting.md) |
+| `--bare` mode | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
 | Bash tool | [4](../modules/module-04-agentic-loop-tools.md) |
 | Branching a session | [6](../modules/module-06-planning-real-projects.md) |
 | Channels | [9](../modules/module-09-mcp.md) |
@@ -54,13 +59,15 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 | Claude apps gateway | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
 | Claude Security plugin | [8](../modules/module-08-plugin-ecosystem.md) |
 | Claude Tag, Slack | [11](../modules/module-11-every-surface.md) |
-| CLAUDE.md — writing one | [2](../modules/module-02-prompt-engineering.md) |
 | CLAUDE.md — precedence and loading | [5](../modules/module-05-permissions-memory-config.md) |
+| CLAUDE.md — writing one | [2](../modules/module-02-prompt-engineering.md) |
+| `.claude/` directory | [5](../modules/module-05-permissions-memory-config.md) |
 | Code intelligence (LSP) plugins | [8](../modules/module-08-plugin-ecosystem.md) |
 | Code Review (managed GitHub App) | [12](../modules/module-12-cicd-review-security.md) |
 | Compaction | [4](../modules/module-04-agentic-loop-tools.md), [14](../modules/module-14-agent-sdk.md) |
 | Computer use | [11](../modules/module-11-every-surface.md) |
 | Context window | [4](../modules/module-04-agentic-loop-tools.md) |
+| Cost and effort tuning | [Power moves](power-moves.md), [12](../modules/module-12-cicd-review-security.md) |
 | Costs, managing | [12](../modules/module-12-cicd-review-security.md) |
 | Cross-session messaging | [10](../modules/module-10-subagents-orchestration.md) |
 | Desktop app | [11](../modules/module-11-every-surface.md) |
@@ -69,16 +76,24 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 | Edit, Read, Write tools | [4](../modules/module-04-agentic-loop-tools.md) |
 | Effort levels | [10](../modules/module-10-subagents-orchestration.md), [14](../modules/module-14-agent-sdk.md) |
 | Enterprise rollout | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
+| Focus view (VS Code) | [11](../modules/module-11-every-surface.md) |
 | GitHub Actions | [12](../modules/module-12-cicd-review-security.md) |
 | GitLab CI/CD | [12](../modules/module-12-cicd-review-security.md) |
 | Glob and Grep tools | [4](../modules/module-04-agentic-loop-tools.md) |
+| Goals (`/goal`) | [2](../modules/module-02-prompt-engineering.md) |
+| Headless mode (`claude -p`) | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
 | Hooks — events and exit codes | [7](../modules/module-07-skills-commands-hooks.md) |
 | Hosting agents in production | [14](../modules/module-14-agent-sdk.md) |
+| IDE MCP server (`ide`) | [11](../modules/module-11-every-surface.md) |
 | Infrastructure as Code | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
 | Installation | [3](../modules/module-03-installing-everywhere.md) |
+| JetBrains plugin | [11](../modules/module-11-every-surface.md) |
+| JSON output, `--json-schema` | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
 | Keyboard shortcuts | [3](../modules/module-03-installing-everywhere.md) |
 | Marketplaces, creating one | [8](../modules/module-08-plugin-ecosystem.md) |
 | MCP — connecting servers | [9](../modules/module-09-mcp.md) |
+| `.mcp.json` and MCP scopes | [9](../modules/module-09-mcp.md) |
+| Memory and CPU problems | [Troubleshooting](troubleshooting.md) |
 | Mobile | [11](../modules/module-11-every-surface.md) |
 | Model lineup and pricing | [1](../modules/module-01-agentic-era.md) |
 | Monorepos and large codebases | [6](../modules/module-06-planning-real-projects.md) |
@@ -91,8 +106,10 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 | Prompt caching | [4](../modules/module-04-agentic-loop-tools.md) |
 | Remote Control | [11](../modules/module-11-every-surface.md) |
 | `REVIEW.md` | [12](../modules/module-12-cicd-review-security.md) |
+| ripgrep, search not finding files | [Troubleshooting](troubleshooting.md) |
 | Routines (scheduled cloud agents) | [11](../modules/module-11-every-surface.md) |
 | Rules (`.claude/rules/`), path-scoped | [5](../modules/module-05-permissions-memory-config.md) |
+| Safe mode (`--safe-mode`) | [Troubleshooting](troubleshooting.md) |
 | Sandboxing | [4](../modules/module-04-agentic-loop-tools.md) |
 | Security — the full picture | [12](../modules/module-12-cicd-review-security.md) |
 | `security-guidance` plugin | [8](../modules/module-08-plugin-ecosystem.md) |
@@ -101,11 +118,13 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 | Settings precedence | [5](../modules/module-05-permissions-memory-config.md) |
 | Skills — writing and scoping | [7](../modules/module-07-skills-commands-hooks.md) |
 | Slash commands, custom | [7](../modules/module-07-skills-commands-hooks.md) |
+| Streaming output (`stream-json`) | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
 | Structured outputs | [14](../modules/module-14-agent-sdk.md) |
 | Subagents | [10](../modules/module-10-subagents-orchestration.md) |
 | Tool search (MCP) | [9](../modules/module-09-mcp.md) |
 | Ultrareview | [12](../modules/module-12-cicd-review-security.md) |
 | Verification signals | [1](../modules/module-01-agentic-era.md), [2](../modules/module-02-prompt-engineering.md) |
+| VS Code extension | [11](../modules/module-11-every-surface.md) |
 | Web sessions | [11](../modules/module-11-every-surface.md) |
 | Worktrees | [6](../modules/module-06-planning-real-projects.md), [10](../modules/module-10-subagents-orchestration.md) |
 

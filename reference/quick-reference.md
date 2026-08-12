@@ -322,27 +322,35 @@ A quick-reference companion for the full course. Each topic gets a bit more than
 
 # Module 11 — Claude Code Across Every Surface
 
-**1. Claude Code Desktop**
+**1. Your IDE — VS Code and JetBrains**
+- **VS Code extension** — the recommended way to use Claude Code in VS Code. Needs VS Code 1.94.0+; a paid subscription or Console account, no API key. Review and edit plans before accepting, inline diffs with optional auto-accept, conversation history, multiple conversations in tabs or windows.
+- Shortcuts: `Cmd+Esc`/`Ctrl+Esc` toggles focus between editor and prompt box. `Option+K`/`Alt+K` inserts an @-mention for your selection (`@app.ts#5-10`). `Ctrl+Option+F`/`Ctrl+Alt+F` toggles **Focus view**, which hides tool calls, results, and thinking.
+- **JetBrains plugin** — IntelliJ, PyCharm, Android Studio, WebStorm, PhpStorm, GoLand. It **does not bundle the CLI**: it runs `claude` in the integrated terminal, so install the CLI first. Native diff viewer (`/config` → Diff tool), automatic selection and diagnostic sharing, `Cmd+Option+K`/`Alt+Ctrl+K` for file references.
+- `/ide` connects an external terminal to a running IDE; it installs the plugin for you if it finds an IDE without one.
+- Both work through a local MCP server named `ide`, hidden from `/mcp`. Only `mcp__ide__getDiagnostics` is visible to the model; the rest is internal RPC.
+- **Two cautions:** your editor selection and active file path travel with every prompt — block a sensitive file with a `Read` deny rule. And `acceptEdits` inside JetBrains can modify IDE config files the IDE auto-executes, so prefer manual approval there.
+
+**2. Claude Code Desktop**
 - Parallel sessions with git isolation, drag-and-drop pane layout, integrated terminal/file editor, visual diff review.
 - **Computer use** (research preview) lets Claude click through native apps on macOS for things only a GUI can verify.
 - **iOS Simulator pane** — opens automatically when Claude builds/runs/checks an app; drives the simulator directly (no Accessibility/Screen Recording permissions needed), local sessions only, macOS with Xcode.
 - **In-app browser** — Claude can pull up docs, designs, or any site and interact with it the same way it does local dev-server previews.
 - **What Desktop can't do:** agent teams are CLI-only (dynamic workflows *do* run in Desktop); no inline code suggestions; Bedrock and Foundry need the CLI or VS Code; computer use isn't on Linux yet; `/permissions` returns `isn't available in this environment`, and `/config` opens Settings while ignoring any argument.
 
-**2. Claude Code on the Web and Routines**
+**3. Claude Code on the Web and Routines**
 - Cloud sessions, connect a GitHub repo, no local setup required.
 - **Routines** — templated cloud agents that fire on a schedule, a GitHub event, or an API call: real autopilot.
 
-**3. Claude Code on Mobile**
+**4. Claude Code on Mobile**
 - Start, monitor, and steer tasks from your phone; push notifications when a long task finishes or Claude needs input.
 
-**4. Remote Control**
+**5. Remote Control**
 - Continue a local session from your phone, tablet, or any browser via claude.ai/code or the mobile app.
 
-**5. Claude Tag (Slack)**
+**6. Claude Tag (Slack)**
 - Tag @Claude in any channel to delegate a task — the current path for Team/Enterprise Slack workspaces (Pro/Max still use the earlier Claude Code in Slack setup).
 
-**6. Claude in Chrome**
+**7. Claude in Chrome**
 - Generally available on all direct Anthropic plans — test web apps, debug via console logs, automate form filling, extract data straight from the browser.
 - Start with `claude --chrome`; `/chrome` shows status and lets you reconnect or pick a browser. Needs extension v1.0.36+.
 - **Requires `/login`** — an API key or `claude setup-token` token keeps Chrome integration off even with `--chrome`. Not available on Bedrock/Google Cloud/Foundry, and **not supported in WSL**.
@@ -353,13 +361,23 @@ A quick-reference companion for the full course. Each topic gets a bit more than
 
 # Module 12 — CI/CD, Code Review, and Security
 
-**1. Claude Code GitHub Actions**
+**1. Headless Mode — Claude Code Without a Terminal**
+- `claude -p "<prompt>"` runs non-interactively and exits. `0` on success, non-zero on failure, so scripts can branch on it. Officially this is the Agent SDK's CLI surface — same loop as Module 14, driven from a shell.
+- **`--bare` is the one to remember for CI.** It skips auto-discovery of hooks, skills, plugins, MCP servers, auto memory, and `CLAUDE.md`, so a run is reproducible across machines. It never reads OAuth credentials or the keychain — set `ANTHROPIC_API_KEY`. Docs say it will become the default for `-p`.
+- `--output-format text|json|stream-json`. `json` carries `result`, `session_id`, and `total_cost_usd` (a client-side estimate). Add `--json-schema` for a validated object in `structured_output`. Stream tokens with `stream-json` + `--verbose` + `--include-partial-messages`.
+- Nobody can answer a prompt, so pre-decide permissions: `--allowedTools "Bash,Read,Edit"` (permission rule syntax — `Bash(git diff *)`, and the space before `*` matters), or `--permission-mode dontAsk` for a locked-down run.
+- Reads stdin, capped at **10MB** — `git diff main | claude -p "..."` avoids granting Bash permission at all.
+- `--continue` for the last conversation; capture `session_id` from JSON and `--resume` it for parallel ones. Works across directories.
+- **CI gate:** `plugin_errors` and `mcp_server_errors` in the `system/init` event are omitted entirely when empty, so fail the build on a non-empty array — otherwise a plugin that didn't load looks like a clean run.
+- Under `-p`: `--bg` is rejected; `/login` and other terminal-only commands don't work, but skills and `/model sonnet`-style arguments do; background Bash tasks are killed ~5s after the result; SIGTERM exits `143`.
+
+**2. Claude Code GitHub Actions**
 - `@claude` mentions in PR/issue comments trigger the action, which auto-detects interactive vs. automation mode. Built on the Claude Agent SDK — same engine, packaged for CI.
 
-**2. Claude Code in GitLab CI/CD**
+**3. Claude Code in GitLab CI/CD**
 - Same underlying idea, wired into GitLab pipelines for teams not on GitHub.
 
-**3. Automated Code Review and /ultrareview**
+**4. Automated Code Review and /ultrareview**
 - `/code-review` runs locally as a background subagent. **Effort levels trade coverage against confidence** — `low`/`medium` report only high-confidence findings, `high`→`max` broaden coverage and may include uncertain ones. With no level typed, it reuses the last one you typed, even from an earlier session.
 - `/code-review ultra` escalates to **ultrareview**, a genuinely separate deeper review that runs in the cloud (`claude ultrareview` is its non-interactive subcommand). It needs a claude.ai account and isn't available on Bedrock/Google Cloud/Foundry or under Zero Data Retention — where it quietly falls back to a local review.
 - Naming history: **`/review` is now an alias of `/code-review`**; `/simplify` was its old name and is now a separate cleanup-only review.
@@ -369,14 +387,14 @@ A quick-reference companion for the full course. Each topic gets a bit more than
 - Tune it with two files that carry very different weight: **`CLAUDE.md`** is read as project context and its violations are flagged as *nits*; **`REVIEW.md`** is injected into every review agent's system prompt as the **highest-priority** block. `REVIEW.md` is pasted verbatim, so `@` imports aren't expanded — and the local `/code-review` command doesn't read it at all.
 - `@claude review` triggers one review; **`@claude review always`** also subscribes the PR to push-triggered reviews. Before a July 2026 change the bare command did both.
 
-**4. Security Fundamentals: Sandbox Environments**
+**5. Security Fundamentals: Sandbox Environments**
 - Escalating isolation levels: sandboxed Bash tool (Module 4) → dev containers/Docker → full VMs — pick based on how untrusted the code or task actually is.
 
-**5. Managing Costs**
+**6. Managing Costs**
 - Main levers: token usage, model selection, effort levels, and the prompt-caching habits from Module 4.
 - `/usage` breaks down what's driving your plan limits by skill, subagent, plugin, and MCP server.
 
-**6. Hands-On: Wiring Claude Code Into a CI/CD Pipeline**
+**7. Hands-On: Wiring Claude Code Into a CI/CD Pipeline**
 - **Try:** add a GitHub Actions workflow that runs `/code-review` automatically on every PR open/sync.
 
 ---

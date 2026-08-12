@@ -8,7 +8,62 @@ Same engine everywhere, tuned differently. This module is about picking the righ
 
 ---
 
-## 1. Claude Code Desktop
+## 1. Your IDE — VS Code and JetBrains
+
+For most developers this is the surface they'll actually live in. Both integrations connect to the same CLI you already installed — neither replaces it.
+
+### VS Code
+
+Install the **Claude Code extension** from the marketplace. You need VS Code 1.94.0 or higher and a paid Claude subscription or Console account; no API key. Anthropic calls this the recommended way to use Claude Code in VS Code.
+
+What the extension gives you over a terminal:
+
+- **Review and edit plans before accepting them** — plan mode becomes an editable document rather than a wall of text
+- **Inline diffs** in the editor, with auto-accept as an option
+- **@-mentions with line ranges** — select code and Claude sees it automatically. `Option+K` (Mac) / `Alt+K` (Windows/Linux) inserts the reference into your prompt as `@app.ts#5-10`
+- **Multiple conversations** in separate tabs or windows, plus browsable history
+- **Focus view** — hides tool calls, tool results, and thinking behind expandable rows, leaving your prompts and Claude's answers. `Ctrl+Option+F` / `Ctrl+Alt+F`, or **Claude Code: Toggle Focus view** in the Command Palette. It persists across sessions
+
+Two shortcuts worth memorising:
+
+| Shortcut | Does |
+|---|---|
+| `Cmd+Esc` / `Ctrl+Esc` | Toggle focus between the editor and Claude's prompt box |
+| `Option+K` / `Alt+K` | Insert an @-mention for the current selection |
+
+The prompt box footer shows how many lines are selected. Click the indicator to toggle whether Claude can see them — the eye-slash icon means hidden.
+
+### JetBrains
+
+One plugin covers **IntelliJ IDEA, PyCharm, Android Studio, WebStorm, PhpStorm, and GoLand**.
+
+The important install detail: **the plugin does not bundle the CLI.** It runs `claude` in your IDE's integrated terminal and connects to it. Install the CLI first, then the [Claude Code plugin](https://plugins.jetbrains.com/plugin/27310-claude-code-beta-) from the JetBrains Marketplace, then restart the IDE completely. A "Cannot launch Claude Code" notification means `claude` isn't on your PATH — set the full path under **Settings → Tools → Claude Code [Beta] → Claude command**.
+
+What you get:
+
+- **Quick launch** — `Cmd+Esc` / `Ctrl+Esc` opens Claude Code from the editor
+- **Diffs in the IDE's native diff viewer** instead of the terminal. Change it with **Diff tool** in `/config` (`auto` for the IDE, `terminal` to keep them inline)
+- **Selection and open-tab context** shared automatically
+- **File reference shortcut** — `Cmd+Option+K` / `Alt+Ctrl+K` inserts `@src/auth.ts#L1-99`
+- **Diagnostic sharing** — lint and syntax errors from the IDE flow to Claude as you work
+
+Run `claude` from the IDE's integrated terminal and everything is active. From an external terminal, run `/ide` to connect — it confirms with something like `Connected to IntelliJ IDEA.` If it finds a running IDE without the plugin, `/ide` installs it and asks you to restart.
+
+### The `ide` MCP server
+
+Both integrations work by running a local MCP server named `ide` that the CLI connects to. It's hidden from `/mcp` because there's nothing to configure — but it's worth knowing it exists if your organisation allowlists MCP tools with a `PreToolUse` hook.
+
+Only one of its tools is visible to the model: `mcp__ide__getDiagnostics`, which returns the IDE's errors and warnings. The rest is internal RPC the CLI uses to open diffs and read selections. The JetBrains plugin exposes no code-execution tool to the model.
+
+### Two things to be careful about
+
+**Your selection travels with your prompt.** While connected, the CLI attaches the current editor selection and the active file's path to each message — the transcript shows `⧉ Selected N lines from <file>`. To keep a sensitive file such as `.env` out, add a **`Read` deny rule** for its path. A matching deny rule blocks both the selected text and the open-file notice.
+
+**`acceptEdits` is riskier inside JetBrains.** Claude may be able to modify IDE configuration files that the IDE then executes automatically — which sidesteps the bash permission prompts. Anthropic's own guidance is to prefer manual approval for edits in JetBrains.
+
+---
+
+## 2. Claude Code Desktop
 
 The Claude Desktop app has three tabs: **Chat**, **Cowork**, and **Code**. This module is about the Code tab.
 
@@ -38,7 +93,7 @@ This is the part that catches people moving between surfaces:
 
 ---
 
-## 2. Claude Code on the web, and Routines
+## 3. Claude Code on the web, and Routines
 
 **Cloud sessions.** Connect a GitHub repo, no local setup, and the work keeps running after you disconnect. Best for long-running tasks that don't need much steering.
 
@@ -65,7 +120,7 @@ Three things worth knowing before you rely on them:
 
 ---
 
-## 3. Claude Code on mobile
+## 4. Claude Code on mobile
 
 Start, monitor, and steer tasks from your phone, with push notifications when a long task finishes or Claude needs input.
 
@@ -73,7 +128,7 @@ Mobile is a thin client. It reaches cloud sessions, drives a local session throu
 
 ---
 
-## 4. Remote Control
+## 5. Remote Control
 
 Continue a running local session from your phone, tablet, or any browser via claude.ai/code or the mobile app. Start it with `claude remote-control`.
 
@@ -91,7 +146,7 @@ These four blur together. The distinction is what triggers the work and where Cl
 
 ---
 
-## 5. Claude Tag — bringing Claude into Slack
+## 6. Claude Tag — bringing Claude into Slack
 
 Tag `@Claude` in any channel to assign it a task from a thread.
 
@@ -104,7 +159,7 @@ The difference is access control, not features — which is exactly why it matte
 
 ---
 
-## 6. Claude in Chrome
+## 7. Claude in Chrome
 
 Connects Claude Code to the **Claude in Chrome** browser extension, giving browser automation from the CLI or the VS Code extension.
 

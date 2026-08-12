@@ -16,6 +16,10 @@ reference/
   commands.md               # Every slash command, CLI flag, env var → module
   quick-reference.md        # All 16 modules condensed. Derived from modules/ —
                             # when you change a module, update the matching entry here
+  troubleshooting.md        # Symptom → cause → fix. Deliberately NOT a module:
+                            # it's lookup material, read when something is broken
+  power-moves.md            # Compound techniques that span several modules, plus
+                            # anti-patterns. Also not a module — it presumes all 16
   syllabus.md               # Chapter-level outline of all 16 modules
 labs/                       # Spec for the practice repo the exercises assume
 ```
@@ -35,8 +39,11 @@ A change in `modules/` usually needs a matching change elsewhere. In rough order
 3. `reference/topics.md` — if you introduced a new concept worth indexing
 4. `README.md` — only if a module's one-line description changed
 5. `reference/syllabus.md` — only if chapters were added, removed, or renamed
+6. `reference/troubleshooting.md` / `reference/power-moves.md` — only if the change touches a documented failure mode or a technique they cite
 
 Contradictions between these files are the main failure mode of this repo.
+
+**Before pointing an index row at a module, confirm the module actually covers it.** `reference/commands.md` once listed `/goal` against Module 2 when Module 2 never mentioned it. An index that lies is worse than a missing row.
 
 ## Module file conventions
 Every file in `modules/` follows the same shape:

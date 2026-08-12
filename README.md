@@ -17,6 +17,8 @@ Sixteen modules, four phases, a two-track capstone. Every fact is verified again
 | 🔧 **Here for DevOps/SRE** | [Module 13](modules/module-13-infrastructure-cloud-enterprise.md) is the one written for you |
 | 🔍 **Looking for one thing** | [Topic index](reference/topics.md) · [Command reference](reference/commands.md) |
 | 📋 **Want the short version** | [Quick reference](reference/quick-reference.md) — all 16 modules condensed |
+| 🩹 **Something's broken** | [Troubleshooting](reference/troubleshooting.md) — symptom → cause → fix |
+| ⚡ **Already good, want sharper** | [Power moves](reference/power-moves.md) — the compound techniques |
 
 ---
 
@@ -52,8 +54,8 @@ Sixteen modules, four phases, a two-track capstone. Every fact is verified again
 | # | Module | What you'll learn |
 |---|---|---|
 | **10** 🔬 | [Subagents and Orchestration at Scale](modules/module-10-subagents-orchestration.md) | Subagents, agent teams, dynamic workflows, worktrees, cross-session messaging |
-| **11** | [Claude Code Across Every Surface](modules/module-11-every-surface.md) | Desktop, web, routines, mobile, Remote Control, Slack, and Chrome |
-| **12** | [CI/CD, Code Review, and Security](modules/module-12-cicd-review-security.md) | GitHub Actions, the review ladder, and the security story end to end |
+| **11** | [Claude Code Across Every Surface](modules/module-11-every-surface.md) | VS Code, JetBrains, Desktop, web, routines, mobile, Remote Control, Slack, Chrome |
+| **12** | [CI/CD, Code Review, and Security](modules/module-12-cicd-review-security.md) | Headless mode, GitHub Actions, the review ladder, and the security story end to end |
 | **13** | [Infrastructure, Cloud, and Enterprise](modules/module-13-infrastructure-cloud-enterprise.md) | IaC, third-party providers, self-hosted environments, gateway, admin, observability |
 
 ### Phase 4 · Advanced → Hero
@@ -74,13 +76,15 @@ Sixteen modules, four phases, a two-track capstone. Every fact is verified again
 
 ## Reference
 
-Three ways to find something without reading a whole module:
+Six ways to find something without reading a whole module:
 
 | | |
 |---|---|
 | [**Topic index**](reference/topics.md) | A–Z concepts → the module that covers them, plus a "I want to…" table |
 | [**Command reference**](reference/commands.md) | Every slash command, CLI flag, and environment variable in the course |
 | [**Quick reference**](reference/quick-reference.md) | All 16 modules condensed to bullets |
+| [**Troubleshooting**](reference/troubleshooting.md) | Symptom → cause → fix. Install, login, config not loading, performance |
+| [**Power moves**](reference/power-moves.md) | Compound techniques that combine several modules, plus the anti-patterns |
 | [**Syllabus**](reference/syllabus.md) | Full chapter-level outline of all 16 modules |
 
 ---
@@ -98,7 +102,7 @@ Three ways to find something without reading a whole module:
 
 ```
 modules/        The course. Sixteen files, one per module — this is the content
-reference/      Topic index, command reference, quick reference, syllabus
+reference/      Topic index, commands, quick reference, troubleshooting, power moves, syllabus
 labs/           Practice repo specification for the hands-on exercises
 CLAUDE.md       Instructions for Claude Code when working in this repo
 ```

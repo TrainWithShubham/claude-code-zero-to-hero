@@ -6,7 +6,137 @@ Everything so far has been Claude Code working with you. This module is about Cl
 
 ---
 
-## 1. Claude Code GitHub Actions
+## 1. Headless mode — Claude Code without a terminal
+
+Everything else in this module is built on one flag. `-p` (or `--print`) runs a prompt non-interactively and exits:
+
+```bash
+claude -p "What does the auth module do?"
+```
+
+It exits `0` on success and non-zero on failure, so scripts can branch on the exit status. An invalid flag is reported to stderr before the run starts; a failure inside the run — missing authentication, for example — is printed as the result on stdout.
+
+Officially this is the **Agent SDK's CLI surface**: the same agent loop and context management as Module 14's SDK, driven from a shell instead of Python or TypeScript.
+
+### `--bare` — the flag that matters most in CI
+
+By default `claude -p` loads everything an interactive session would: hooks, skills, plugins, MCP servers, auto memory, and `CLAUDE.md`. In CI that's a reproducibility problem — a hook in a teammate's `~/.claude` or a server in the project's `.mcp.json` changes the result.
+
+```bash
+claude --bare -p "Summarize README.md" --allowedTools "Read"
+```
+
+`--bare` skips all of that discovery and starts faster. Two consequences worth knowing:
+
+- **It never reads OAuth credentials or the system keychain.** Set `ANTHROPIC_API_KEY`, or supply an `apiKeyHelper` in `--settings`. Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry still read their own provider credentials as normal.
+- **Claude gets Bash, file read, and file edit only.** Load anything else explicitly: `--append-system-prompt`, `--settings`, `--mcp-config`, `--agents`, `--plugin-dir` / `--plugin-url`.
+
+Anthropic's docs call `--bare` the recommended mode for scripted and SDK calls, and say it will become the default for `-p` in a future release. Write it into your pipelines now.
+
+### Output formats
+
+`--output-format` controls what comes back:
+
+| Format | Shape |
+|---|---|
+| `text` | plain text (default) |
+| `json` | one object with `result`, `session_id`, usage, and `total_cost_usd` |
+| `stream-json` | newline-delimited JSON events, one per line |
+
+```bash
+claude -p "Summarize this project" --output-format json | jq -r '.result'
+```
+
+The cost fields in `json` are client-side estimates and can differ from your actual bill.
+
+For a specific shape, pair `--output-format json` with `--json-schema`. The validated object lands in `structured_output`:
+
+```bash
+claude -p "Extract the main function names from auth.py" \
+  --output-format json \
+  --json-schema '{"type":"object","properties":{"functions":{"type":"array","items":{"type":"string"}}},"required":["functions"]}' \
+  | jq '.structured_output'
+```
+
+An invalid schema now fails loudly with `Error: --json-schema is not a valid JSON Schema`. The `format` keyword is accepted but treated as an annotation, not enforced.
+
+To stream tokens as they're generated, add `--verbose` and `--include-partial-messages`. The last line of the stream is always a `result` message with the final text, cost, and session metadata.
+
+### Permissions in a non-interactive run
+
+There's nobody to answer a prompt, so you have to pre-decide. Two levers:
+
+```bash
+# Name the tools
+claude -p "Run the test suite and fix any failures" --allowedTools "Bash,Read,Edit"
+
+# Or set a baseline for the whole run
+claude -p "Apply the lint fixes" --permission-mode acceptEdits
+```
+
+- `--allowedTools` uses the same [permission rule syntax](https://code.claude.com/docs/en/settings) as your settings file, so `Bash(git diff *)` prefix-matches. **The space before `*` matters** — `Bash(git diff*)` would also match `git diff-index`.
+- `--permission-mode dontAsk` denies anything outside your `permissions.allow` rules and the read-only command set. This is the right mode for a locked-down CI run.
+- `acceptEdits` covers file writes plus common filesystem commands (`mkdir`, `touch`, `mv`, `cp`). Other shell commands still need an allow rule, and the run **aborts** when one is attempted without it.
+
+### Piping and scripting
+
+`-p` reads stdin, so Claude behaves like any other command-line tool:
+
+```bash
+cat build-error.txt | claude -p 'concisely explain the root cause of this build error' > output.txt
+```
+
+Piped stdin is capped at **10MB**. Past that, Claude Code exits with an error and a non-zero status — write the content to a file and reference the path in your prompt instead.
+
+That makes a project-specific linter a one-line `package.json` script:
+
+```json
+{
+  "scripts": {
+    "lint:claude": "git diff main | claude -p \"you are a typo linter. for each typo in this diff, report filename:line on one line and the issue on the next. return nothing else.\""
+  }
+}
+```
+
+Piping the diff means Claude never needs Bash permission to read it.
+
+### Multi-step runs
+
+```bash
+claude -p "Review this codebase for performance issues"
+claude -p "Now focus on the database queries" --continue
+```
+
+For parallel conversations, capture the session ID instead of relying on "most recent":
+
+```bash
+session_id=$(claude -p "Start a review" --output-format json | jq -r '.session_id')
+claude -p "Continue that review" --resume "$session_id"
+```
+
+The two commands can run from different directories — Claude Code finds a session by ID anywhere on the machine.
+
+### Failing the build when your setup didn't load
+
+A plugin or MCP server that silently fails to load turns a real review into a run that finds nothing and exits `0`. The `system/init` event in `stream-json` carries the evidence:
+
+| Field | Use |
+|---|---|
+| `plugins` / `plugin_errors` | plugins that loaded, and load-time failures with `plugin`, `type`, `message` |
+| `mcp_servers` / `mcp_server_errors` | servers in the session, and `--mcp-config` entries skipped by validation |
+
+Both `*_errors` keys are **omitted entirely when there are no errors**, so a CI gate can simply fail on a non-empty array.
+
+### Things that behave differently under `-p`
+
+- **`--bg` is rejected**, and so is `--cloud` with a task description. `--cloud` with a session ID queues a message into that cloud session and exits.
+- **Terminal-only commands don't work** — `/login` among them. Skills and custom commands *do*: put `/skill-name` in the prompt string. `/model`, `/effort`, `/fast`, `/color`, and `/rename` take the value as an argument (`/model sonnet`), and `/config` takes `key=value`.
+- **Background Bash tasks are killed** about five seconds after the final result. Background subagents and workflows are exempt — their output is part of the result — but that wait is capped at ten minutes by default (`CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS`).
+- **SIGTERM** aborts the turn, kills the Bash process tree, runs `SessionEnd` hooks, and exits `143`.
+
+---
+
+## 2. Claude Code GitHub Actions
 
 ### Setup
 
@@ -95,13 +225,13 @@ If your workflows reference `@beta`: change it to `@v1`, remove the `mode` input
 
 ---
 
-## 2. Claude Code in GitLab CI/CD
+## 3. Claude Code in GitLab CI/CD
 
 The same idea wired into GitLab pipelines, for teams not on GitHub. For self-hosted GitHub, see GitHub Enterprise Server.
 
 ---
 
-## 3. Automated code review
+## 4. Automated code review
 
 There are three distinct things here, and they're easy to conflate.
 
@@ -206,7 +336,7 @@ Keep it short. A long `REVIEW.md` dilutes the rules that matter.
 
 ---
 
-## 4. Security fundamentals
+## 5. Security fundamentals
 
 The isolation ladder from Module 4 still applies: **sandboxed Bash tool → dev containers or Docker → full VMs**, picked by how untrusted the code or task actually is.
 
@@ -225,7 +355,7 @@ The one-line version to leave learners with: **if a rule matters, it belongs in 
 
 ---
 
-## 5. Managing costs
+## 6. Managing costs
 
 `/usage` breaks down what's driving your plan limits by skill, subagent, plugin, and MCP server.
 
@@ -248,7 +378,11 @@ Three separate cost surfaces appear in this module, and it's worth naming them s
 
 ---
 
-## 6. Hands-on: wiring Claude Code into a pipeline
+## 7. Hands-on: wiring Claude Code into a pipeline
+
+**Try:** pipe a real failure into headless mode and see what comes back — `npm test 2>&1 | claude --bare -p 'name the single root cause in one sentence' --allowedTools "Read"`.
+
+**Try:** add the `lint:claude` script from Chapter 1 to a project's `package.json` and run it on a branch with a typo in it.
 
 **Try:** run `/install-github-app`, merge the workflow PR, then open an issue and comment `@claude implement this`.
 

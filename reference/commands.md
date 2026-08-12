@@ -19,6 +19,7 @@ Module numbers link to the module that explains the command properly.
 | `/rename <name>` | Name the current session so you can resume it by name | [6](../modules/module-06-planning-real-projects.md) |
 | `/btw` | Ask a side question whose answer never enters conversation history | [2](../modules/module-02-prompt-engineering.md) |
 | `/export` | Copy or save the conversation as readable text | [6](../modules/module-06-planning-real-projects.md) |
+| `/copy [N]` | Copy the last response — or the Nth-latest — to the clipboard. Press `w` in the code-block picker to write to a file instead | [Troubleshooting](troubleshooting.md) |
 
 ## Configuration and diagnostics
 
@@ -34,6 +35,11 @@ Module numbers link to the module that explains the command properly.
 | `/usage` | What's driving your plan limits, by skill, subagent, plugin, MCP server | [12](../modules/module-12-cicd-review-security.md) |
 | `/theme` | Theme picker | [3](../modules/module-03-installing-everywhere.md) |
 | `/login` · `/logout` | Authenticate or sign out | [3](../modules/module-03-installing-everywhere.md) |
+| `/skills` | Available skills from project, user, and plugin sources | [Troubleshooting](troubleshooting.md) |
+| `/debug [issue]` | Turn on debug logging mid-session and have Claude diagnose from the log | [Troubleshooting](troubleshooting.md) |
+| `/heapdump` | Heap snapshot + memory breakdown to `~/Desktop`. Doesn't appear in the menu — type it in full | [Troubleshooting](troubleshooting.md) |
+| `/terminal-setup` | Fix garbled text in an integrated terminal by disabling GPU acceleration | [Troubleshooting](troubleshooting.md) |
+| `/feedback` | Report a problem to Anthropic from inside Claude Code | [Troubleshooting](troubleshooting.md) |
 
 ## Permissions and sandboxing
 
@@ -53,7 +59,7 @@ Module numbers link to the module that explains the command properly.
 | `/review` | Alias of `/code-review` | [12](../modules/module-12-cicd-review-security.md) |
 | `/simplify` | Cleanup-only review — applies fixes without hunting bugs | [12](../modules/module-12-cicd-review-security.md) |
 | `/security-review` | One security pass over the current branch | [12](../modules/module-12-cicd-review-security.md) |
-| `/goal` | Keep Claude working until a completion condition holds | [2](../modules/module-02-prompt-engineering.md) |
+| `/goal [condition\|clear]` | Keep Claude working across turns until a condition holds. No argument shows the current goal | [2](../modules/module-02-prompt-engineering.md) |
 
 ## Orchestration
 
@@ -82,6 +88,7 @@ Module numbers link to the module that explains the command properly.
 
 | Command | Does | Module |
 |---|---|---|
+| `/ide` | Connect an external terminal session to your running VS Code or JetBrains IDE | [11](../modules/module-11-every-surface.md) |
 | `/chrome` | Chrome integration status, permissions, browser choice | [11](../modules/module-11-every-surface.md) |
 | `claude remote-control` | Drive this session from a phone or browser | [11](../modules/module-11-every-surface.md) |
 | `/schedule` (alias `/routines`) | Create and manage cloud routines | [11](../modules/module-11-every-surface.md) |
@@ -92,7 +99,15 @@ Module numbers link to the module that explains the command properly.
 
 | Flag | Does | Module |
 |---|---|---|
-| `-p "<prompt>"` | Non-interactive run. `--output-format json` for structured output | [12](../modules/module-12-cicd-review-security.md) |
+| `-p "<prompt>"` (`--print`) | Non-interactive run. Exits `0` on success, non-zero on failure | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
+| `--bare` | Skip auto-discovery of hooks, skills, plugins, MCP, auto memory, and `CLAUDE.md`. **Use this in CI** | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
+| `--output-format text\|json\|stream-json` | Response shape. `json` adds `result`, `session_id`, and cost | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
+| `--json-schema '<schema>'` | With `--output-format json`, validate the result into `structured_output` | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
+| `--include-partial-messages` | With `stream-json` and `--verbose`, stream tokens as they're generated | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
+| `--allowedTools "Bash,Read,Edit"` | Pre-approve tools. Uses permission rule syntax — `Bash(git diff *)`, space before `*` | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
+| `--append-system-prompt "<text>"` | Add instructions while keeping default behaviour | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
+| `--safe-mode` | Start with every customisation disabled. **The first debugging step** | [Troubleshooting](troubleshooting.md) |
+| `--debug` · `--debug=mcp` | Log hook evaluation or MCP stderr to `~/.claude/debug/<session-id>.txt` | [Troubleshooting](troubleshooting.md) |
 | `--continue` · `--resume [name]` | Resume the last or a named session | [6](../modules/module-06-planning-real-projects.md) |
 | `--from-pr <number>` | Find the session that created a PR | [6](../modules/module-06-planning-real-projects.md) |
 | `--fork-session` | Branch a session from the command line | [6](../modules/module-06-planning-real-projects.md) |
@@ -116,7 +131,9 @@ Module numbers link to the module that explains the command properly.
 | `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1` | Turn off auto memory | [5](../modules/module-05-permissions-memory-config.md) |
 | `CLAUDE_CODE_USE_BEDROCK` · `_VERTEX` · `_FOUNDRY` | Route through a cloud provider | [3](../modules/module-03-installing-everywhere.md) |
 | `CLAUDE_CODE_ENABLE_TELEMETRY=1` + `OTEL_*` | OpenTelemetry export | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| `CLAUDE_CONFIG_DIR` | Move config off `~/.claude` | [14](../modules/module-14-agent-sdk.md) |
+| `CLAUDE_CONFIG_DIR` | Move config off `~/.claude` — also the way to get a clean session for debugging | [14](../modules/module-14-agent-sdk.md), [Troubleshooting](troubleshooting.md) |
+| `USE_BUILTIN_RIPGREP=0` | Use your system `ripgrep` when the bundled binary won't run | [Troubleshooting](troubleshooting.md) |
+| `CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS` | Cap how long `claude -p` waits on background subagents (10 min default; `0` = no limit) | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
 | `ENABLE_TOOL_SEARCH=auto` | Threshold-based MCP tool loading | [9](../modules/module-09-mcp.md) |
 | `DISABLE_AUTOUPDATER=1` | Stop background updates | [3](../modules/module-03-installing-everywhere.md) |
 

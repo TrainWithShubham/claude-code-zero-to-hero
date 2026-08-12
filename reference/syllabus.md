@@ -99,20 +99,22 @@
 7. Hands-On: Building a Multi-Agent Codebase Audit
 
 ## Module 11 — Claude Code Across Every Surface
-1. Claude Code Desktop: Parallel Sessions, Computer Use, In-App Browser
-2. Claude Code on the Web and Routines (Scheduled Cloud Agents)
-3. Claude Code on Mobile — Monitor and Steer from Your Phone
-4. Remote Control — Continuing a Session From Any Device
-5. Claude Tag — Bringing Claude Into Slack
-6. Claude in Chrome — Testing and Debugging Web Apps
+1. Your IDE — VS Code and JetBrains
+2. Claude Code Desktop: Parallel Sessions, Computer Use, In-App Browser
+3. Claude Code on the Web and Routines (Scheduled Cloud Agents)
+4. Claude Code on Mobile — Monitor and Steer from Your Phone
+5. Remote Control — Continuing a Session From Any Device
+6. Claude Tag — Bringing Claude Into Slack
+7. Claude in Chrome — Testing and Debugging Web Apps
 
 ## Module 12 — CI/CD, Code Review, and Security
-1. Claude Code GitHub Actions — @claude Mentions and Auto-Fix PRs
-2. Claude Code in GitLab CI/CD
-3. Automated Code Review and /ultrareview — Multi-Agent Bug Hunting
-4. Security Fundamentals: Sandbox Environments and Threat Models
-5. Managing Costs: Token Usage, Model Selection, Effort Levels
-6. Hands-On: Wiring Claude Code Into a CI/CD Pipeline
+1. Headless Mode — Claude Code Without a Terminal (`claude -p`, `--bare`, JSON output)
+2. Claude Code GitHub Actions — @claude Mentions and Auto-Fix PRs
+3. Claude Code in GitLab CI/CD
+4. Automated Code Review and /ultrareview — Multi-Agent Bug Hunting
+5. Security Fundamentals: Sandbox Environments and Threat Models
+6. Managing Costs: Token Usage, Model Selection, Effort Levels
+7. Hands-On: Wiring Claude Code Into a CI/CD Pipeline
 
 ## Module 13 — Claude Code for Infrastructure, Cloud, and Enterprise
 *(Watch this even if you're doing the general-dev capstone — this is the module that makes "Zero to Hero" different from every other Claude Code tutorial.)*

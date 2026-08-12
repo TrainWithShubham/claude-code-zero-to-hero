@@ -139,6 +139,18 @@ showing the structure, then explain in prose.
 
 **The principle:** state the goal and the constraints; don't script the steps. Over-specification is now a failure mode, not a best practice.
 
+### Making the finish line explicit with `/goal`
+
+Stating the outcome in your prompt tells Claude what you want. `/goal` makes it a condition Claude keeps working toward **across turns**, rather than something it can decide it's finished with:
+
+```
+/goal the full test suite passes and there are no type errors
+```
+
+With no argument it shows the current or most recently achieved goal. `/goal clear` removes an active one early (`stop`, `off`, `reset`, `none`, and `cancel` all work too).
+
+This is the constraint from the top of the module made operational. A goal is only as good as its checkability — "the suite passes" is a goal, "the code is clean" is a wish. Give it something it can actually run.
+
 ---
 
 ## 4. Common mistakes when prompting an autonomous agent
