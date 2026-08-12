@@ -327,3 +327,8 @@ Claude can usually reconstruct its own tool-call sequence from the session — a
 - Six tools this module: Read, Write, Edit, Grep, Glob, Bash
 - Two more families — subagents and MCP — are coming later
 - Everything here serves one thing: the gather → act → verify loop from Chapter 1
+
+---
+<!-- nav -->
+
+[← Installing Claude Code Everywhere](module-03-installing-everywhere.md) · [All modules](../README.md#the-course) · [Permissions, Memory, and Configuration →](module-05-permissions-memory-config.md)

@@ -202,3 +202,8 @@ Two things worth connecting:
 Separate from OTel export, Anthropic hosts analytics for tracking adoption and engineering velocity across a team, at `claude.ai/analytics/...`. The Code Review dashboard from Module 12 — PRs reviewed, weekly cost, resolved comments, per-repo breakdown — is one example.
 
 Use OTel when you want the data in your own stack. Use the dashboards when you want the answer without building anything.
+
+---
+<!-- nav -->
+
+[← CI/CD, Code Review, and Security](module-12-cicd-review-security.md) · [All modules](../README.md#the-course) · [Building Products with the Agent SDK →](module-14-agent-sdk.md)

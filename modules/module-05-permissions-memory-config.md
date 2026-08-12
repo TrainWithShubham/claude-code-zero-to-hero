@@ -400,3 +400,8 @@ Read what it flags. On most real projects it finds something.
 - `/context` first, always
 - `/doctor` for a full checkup, `/memory` `/hooks` `/mcp` for specific layers
 - Project-root CLAUDE.md survives compaction; nested files and path-scoped rules reload lazily
+
+---
+<!-- nav -->
+
+[← The Agentic Loop and Built-In Tools](module-04-agentic-loop-tools.md) · [All modules](../README.md#the-course) · [Planning and Executing a Real Project →](module-06-planning-real-projects.md)

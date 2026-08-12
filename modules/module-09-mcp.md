@@ -289,3 +289,8 @@ Notice that Claude queries the server *and* reads your code to answer, which nei
 **Try:** compare `/plugin install sentry@claude-plugins-official` against wiring the same server by hand with `claude mcp add`. The plugin route is usually less work.
 
 **Try:** run the fakechat channel and push a message in from the browser.
+
+---
+<!-- nav -->
+
+[← The Plugin Ecosystem](module-08-plugin-ecosystem.md) · [All modules](../README.md#the-course) · [Subagents and Orchestration at Scale →](module-10-subagents-orchestration.md)

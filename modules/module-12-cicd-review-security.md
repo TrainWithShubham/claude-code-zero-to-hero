@@ -257,3 +257,8 @@ Three separate cost surfaces appear in this module, and it's worth naming them s
 **Try:** add a `REVIEW.md` that caps nits at five and skips generated files. Open a PR that would previously have produced a wall of style comments, and see the difference.
 
 **A distinction worth making explicitly:** for automatic reviews on every PR you don't need a workflow file at all — that's the managed Code Review app. Write a workflow when you want to control the prompt, model, and triggers yourself.
+
+---
+<!-- nav -->
+
+[← Claude Code Across Every Surface](module-11-every-surface.md) · [All modules](../README.md#the-course) · [Infrastructure, Cloud, and Enterprise →](module-13-infrastructure-cloud-enterprise.md)

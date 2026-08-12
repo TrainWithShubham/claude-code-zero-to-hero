@@ -278,3 +278,8 @@ Everything Module 7 taught, shipped as a product. Its source is public — a wor
 **Try:** install `claude-security`, run `/claude-security` → **Scan changes** on a branch, read the report, then **Suggest patches** and `git apply` one.
 
 **Try:** install a code intelligence plugin for your language, make an edit that introduces a type error, and watch Claude notice and fix it in the same turn without running a compiler.
+
+---
+<!-- nav -->
+
+[← Skills, Commands, and Hooks](module-07-skills-commands-hooks.md) · [All modules](../README.md#the-course) · [MCP in 2026 →](module-09-mcp.md)

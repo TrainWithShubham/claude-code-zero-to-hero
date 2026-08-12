@@ -399,3 +399,8 @@ Compare the two. The subagent version is faster to start; the workflow version g
 **Try (team):** enable agent teams and run the competing-hypotheses debate from Chapter 3 on a real bug. Watch teammates message each other in the agent panel.
 
 **Try (cost):** before a big run, check `/model`, and run the workflow on one directory before the whole repository.
+
+---
+<!-- nav -->
+
+[← MCP in 2026](module-09-mcp.md) · [All modules](../README.md#the-course) · [Claude Code Across Every Surface →](module-11-every-surface.md)

@@ -13,8 +13,7 @@ Thumbs.db
 # Production material — kept locally, never published to the learner repo.
 # Instructor notes hold filming cues and runtimes; the distribution plan is a
 # working document with open business decisions in it.
-/docs/instructor/
-/docs/distribution-plan.md
+/production/
 
 # Video and editing assets never belong here
 *.mp4

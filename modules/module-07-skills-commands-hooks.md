@@ -338,3 +338,8 @@ This exercise is the point of the whole module. Do all three steps.
 3. **Enforcement.** Add a `PreToolUse` hook that denies writes to `migrations/`, and try again — still in `bypassPermissions`. **Blocked.**
 
 Three layers, one demo. Once you've seen step 3 succeed where step 2 didn't, you'll never again put a rule that matters in a markdown file.
+
+---
+<!-- nav -->
+
+[← Planning and Executing a Real Project](module-06-planning-real-projects.md) · [All modules](../README.md#the-course) · [The Plugin Ecosystem →](module-08-plugin-ecosystem.md)

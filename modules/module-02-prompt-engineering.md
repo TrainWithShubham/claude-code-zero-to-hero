@@ -182,3 +182,8 @@ Notice which one holds up when the repo doesn't match your assumptions.
 **Try:** point Claude at a deliberately failing test and say only `Fix the failing test.` Watch it read, edit, re-run, and iterate. That's the agentic loop from Module 1, live.
 
 **Try:** run `/init`, then delete half the generated CLAUDE.md using the "would removing this cause mistakes?" test. Confirm what loaded with `/context`.
+
+---
+<!-- nav -->
+
+[← Welcome to the Era of Agentic Coding](module-01-agentic-era.md) · [All modules](../README.md#the-course) · [Installing Claude Code Everywhere →](module-03-installing-everywhere.md)

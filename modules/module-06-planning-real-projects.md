@@ -168,3 +168,8 @@ For cross-package changes, hand Claude the whole change in one session rather th
 **Try:** make an edit, run `/rewind`, and choose **Restore code**. Then have Claude change a file using a Bash command instead and try to rewind that — watch it *not* be restored. That contrast is the clearest way to learn where the safety net ends.
 
 **Try:** in a monorepo, start Claude once from the repo root and once from a package directory. Run `/context` in each and compare the **Memory files** list.
+
+---
+<!-- nav -->
+
+[← Permissions, Memory, and Configuration](module-05-permissions-memory-config.md) · [All modules](../README.md#the-course) · [Skills, Commands, and Hooks →](module-07-skills-commands-hooks.md)

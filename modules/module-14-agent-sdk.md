@@ -310,3 +310,8 @@ Those are exactly the problems durable execution engines exist to solve. The div
 The seam is already in the SDK's design: **`SessionStore`** exists because the SDK expects transcripts to outlive any single container. A durable workflow engine is the natural owner of that state, plus the retry and timeout semantics the SDK deliberately doesn't provide.
 
 Together you get an agent that survives crashes and restarts, which is the pattern behind KubeHealer.
+
+---
+<!-- nav -->
+
+[← Infrastructure, Cloud, and Enterprise](module-13-infrastructure-cloud-enterprise.md) · [All modules](../README.md#the-course) · [Capstone: Choose Your Track →](module-15-capstone.md)

@@ -150,3 +150,8 @@ form with invalid data, and check whether the error messages appear correctly.
 ```
 
 Then follow it with a console read and a fix. That loop — change, verify in a real browser, fix — is the whole value of the integration in one exercise.
+
+---
+<!-- nav -->
+
+[← Subagents and Orchestration at Scale](module-10-subagents-orchestration.md) · [All modules](../README.md#the-course) · [CI/CD, Code Review, and Security →](module-12-cicd-review-security.md)

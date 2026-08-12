@@ -96,3 +96,8 @@ It sits alongside your terminal, IDE, CI system, and cloud console. It doesn't r
 - Everyone takes Modules 1–14.
 - **Module 15 splits into two tracks.** Track A ships a full-stack SaaS feature end to end. Track B builds a self-healing CI/CD or incident-response agent. Two tracks, so a frontend developer and an SRE each walk out with a portfolio piece that matches the job they actually hold.
 - **Module 13 is not optional, even on Track A.** It's the module that makes this different from every other Claude Code tutorial.
+
+---
+<!-- nav -->
+
+_Start of course_ · [All modules](../README.md#the-course) · [Prompt Engineering for Agentic Work →](module-02-prompt-engineering.md)

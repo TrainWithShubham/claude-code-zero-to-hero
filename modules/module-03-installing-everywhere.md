@@ -227,3 +227,8 @@ Enable via `/config` → **Editor mode**, or in settings:
 ### Appearance
 
 `/theme` for the theme picker (`Ctrl+T` inside the picker toggles syntax highlighting in code blocks), plus a customizable status line and `/help`.
+
+---
+<!-- nav -->
+
+[← Prompt Engineering for Agentic Work](module-02-prompt-engineering.md) · [All modules](../README.md#the-course) · [The Agentic Loop and Built-In Tools →](module-04-agentic-loop-tools.md)

@@ -178,3 +178,8 @@ Claude applies a built-in design skill, and it looks for a design system in your
 Your design system outranks Claude's own choices, and your prompt outranks both.
 
 That's a fitting last exercise: the file you learned to write in Module 5 is what makes your final deliverable look like yours.
+
+---
+<!-- nav -->
+
+[← Building Products with the Agent SDK](module-14-agent-sdk.md) · [All modules](../README.md#the-course) · [Staying Sharp: What's Next →](module-16-staying-sharp.md)

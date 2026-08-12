@@ -139,3 +139,8 @@ Point back to whichever capstone track you built and keep extending it. The two 
 - **Build something on the SDK** — the Agent SDK is the same loop you've spent sixteen modules learning, in your own process
 
 And keep the weekly habit. This course is a snapshot. Claude Code isn't.
+
+---
+<!-- nav -->
+
+[← Capstone: Choose Your Track](module-15-capstone.md) · [All modules](../README.md#the-course) · _End of course_
