@@ -22,7 +22,7 @@ Nothing here is new material. It's the same features, used together.
 
 Half the time the answer isn't "compact the conversation," it's "an MCP server is loading 40 tools I'm not using" or "my `CLAUDE.md` is 600 lines." Compacting doesn't fix either.
 
-→ [Module 4](../modules/module-04-agentic-loop-tools.md)
+→ [Module 13](../modules/module-13-prompting-strategies-multiagent.md)
 
 ### Compact with a focus, not blindly
 
@@ -32,13 +32,7 @@ Half the time the answer isn't "compact the conversation," it's "an MCP server i
 
 Bare `/compact` summarises everything with equal weight, which is how you lose the one detail you needed. Naming what to keep turns a lossy operation into a deliberate one.
 
-→ [Module 4](../modules/module-04-agentic-loop-tools.md)
-
-### Use `/btw` for anything you don't want in the history
-
-A side question whose answer never enters the conversation. "What's the syntax for a bash trap again?" doesn't need to occupy context for the rest of the session — and won't distract the next twenty turns.
-
-→ [Module 2](../modules/module-02-prompt-engineering.md)
+→ [Module 13](../modules/module-13-prompting-strategies-multiagent.md)
 
 ### Push big reads into a subagent
 
@@ -46,13 +40,13 @@ A subagent runs in its own context window and returns only its conclusion. Readi
 
 This is also the fix for `Autocompact is thrashing`: the file that keeps refilling the window shouldn't be in the main window at all.
 
-→ [Module 10](../modules/module-10-subagents-orchestration.md) · [Troubleshooting](troubleshooting.md#autocompact-is-thrashing)
+→ [Module 9](../modules/module-09-slash-commands-skills-subagents.md) · [Troubleshooting](troubleshooting.md#autocompact-is-thrashing)
 
 ### `/clear` between unrelated tasks, not `/compact`
 
 Compaction preserves a summary of work you're finished with. If the next task shares nothing with the last one, that summary is pure cost — and worse, a source of confused cross-contamination. Clear it.
 
-→ [Module 2](../modules/module-02-prompt-engineering.md)
+→ [Module 13](../modules/module-13-prompting-strategies-multiagent.md)
 
 ---
 
@@ -64,29 +58,7 @@ Plan mode separates "decide what to do" from "do it." The value isn't safety —
 
 Rule of thumb: if the change would need a PR review, it needs a plan.
 
-→ [Module 6](../modules/module-06-planning-real-projects.md)
-
-### Branch the conversation instead of restarting it
-
-```
-/branch try-the-other-approach
-```
-
-You've spent forty turns building context and now want to try something different. `/branch` copies the conversation and switches you into the copy — the original stays intact. Restarting throws away the expensive part.
-
-→ [Module 6](../modules/module-06-planning-real-projects.md)
-
-### `/rewind` beats `git checkout` for a bad turn
-
-`/rewind` restores code *and* conversation from an earlier point. `git checkout` restores the code and leaves Claude convinced it already made the change.
-
-→ [Module 6](../modules/module-06-planning-real-projects.md)
-
-### Give it a finish line with `/goal`
-
-`/goal` keeps Claude working until a completion condition holds, rather than until it decides it's done. Pair it with something machine-checkable — a passing test suite, a clean `terraform plan`, a green build — and law #1 takes care of itself.
-
-→ [Module 2](../modules/module-02-prompt-engineering.md)
+→ [Module 7](../modules/module-07-planning-a-project.md)
 
 ---
 
@@ -104,25 +76,25 @@ The escalation ladder, in order of strength:
 
 If you've written "never edit files in `/generated`" in `CLAUDE.md` and it's happened twice, writing it a third time in bold won't help. It's a deny rule or a `PreToolUse` hook.
 
-→ [Module 5](../modules/module-05-permissions-memory-config.md) · [Module 7](../modules/module-07-skills-commands-hooks.md)
+→ [Module 5](../modules/module-05-setup-configuration-memory.md) · [Module 11](../modules/module-11-automation-subagents-plugins.md)
 
 ### Let `/doctor` trim your `CLAUDE.md`
 
 `CLAUDE.md` grows. Every line dilutes the others, and a lot of what accumulates is content Claude can derive from the codebase anyway — the framework, the directory layout, the test command that's already in `package.json`. `/doctor` finds that content and proposes cutting it.
 
-→ [Module 5](../modules/module-05-permissions-memory-config.md)
+→ [Module 5](../modules/module-05-setup-configuration-memory.md)
 
 ### Deny-read your secrets, don't rely on Claude avoiding them
 
-A `Read` deny rule on `.env` is the difference between "Claude has been asked not to look" and "Claude cannot look." It also stops the file's contents leaking through IDE selection sharing, which is the path people forget.
+A `Read` deny rule on `.env` is the difference between "Claude has been asked not to look" and "Claude cannot look."
 
-→ [Module 5](../modules/module-05-permissions-memory-config.md) · [Module 11](../modules/module-11-every-surface.md)
+→ [Module 5](../modules/module-05-setup-configuration-memory.md)
 
 ### Restate critical instructions when delegating to Explore or Plan
 
 The built-in Explore and Plan agents **skip `CLAUDE.md`**. Your conventions don't reach them. Put anything that matters into the delegating prompt itself.
 
-→ [Module 10](../modules/module-10-subagents-orchestration.md) · [Troubleshooting](troubleshooting.md#claude-is-ignoring-my-claudemd)
+→ [Module 9](../modules/module-09-slash-commands-skills-subagents.md) · [Troubleshooting](troubleshooting.md#claude-is-ignoring-my-claudemd)
 
 ---
 
@@ -137,7 +109,7 @@ The built-in Explore and Plan agents **skip `CLAUDE.md`**. Your conventions don'
 
 Bigger than model choice for most tasks. Most work does not need `max`, and running everything at `max` is how a plan limit disappears by Wednesday.
 
-→ [Module 10](../modules/module-10-subagents-orchestration.md)
+→ [Module 9](../modules/module-09-slash-commands-skills-subagents.md)
 
 ### Protect the prompt cache
 
@@ -146,49 +118,11 @@ Two habits, both cheap:
 - **Pick a model at session start** and stay on it. Switching invalidates the cache.
 - **Don't edit `CLAUDE.md` mid-task.** It sits near the front of the context, so changing it invalidates everything cached behind it.
 
-→ [Module 4](../modules/module-04-agentic-loop-tools.md)
-
-### Find out what's actually costing you
-
-```
-/usage
-```
-
-Breaks your plan usage down by skill, subagent, plugin, and MCP server. The answer is often one MCP server loading a large tool list on every single turn.
-
-→ [Module 12](../modules/module-12-cicd-review-security.md)
+→ [Module 4](../modules/module-04-getting-started.md)
 
 ---
 
 ## Automation moves
-
-### Always `--bare` in CI
-
-```bash
-claude --bare -p "..." --allowedTools "Read"
-```
-
-Without it, a CI run loads whatever hooks, plugins, MCP servers, and memory happen to exist on the runner — so the same commit can produce different results on different machines. `--bare` skips discovery entirely, and Anthropic's docs say it will become the default for `-p` eventually.
-
-→ [Module 12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal)
-
-### Fail the build when your tooling didn't load
-
-A plugin that silently fails to load turns a security review into a run that finds nothing and exits `0` — the worst possible failure, because it looks like success.
-
-Read `plugin_errors` and `mcp_server_errors` from the `system/init` event in `stream-json`. Both keys are omitted entirely when there are no errors, so a CI gate can just fail on a non-empty array.
-
-→ [Module 12](../modules/module-12-cicd-review-security.md)
-
-### Pipe context in instead of granting permission to fetch it
-
-```bash
-git diff main | claude -p "review this for security issues"
-```
-
-Piping the diff means Claude never needs Bash permission to run `git diff`. Every permission you don't grant is one you don't have to reason about.
-
-→ [Module 12](../modules/module-12-cicd-review-security.md)
 
 ### Mind the space in prefix rules
 
@@ -199,7 +133,7 @@ Bash(git diff*)      ❌  also matches "git diff-index"
 
 One character, meaningfully different blast radius.
 
-→ [Module 12](../modules/module-12-cicd-review-security.md)
+→ [Module 5](../modules/module-05-setup-configuration-memory.md)
 
 ---
 
@@ -219,7 +153,7 @@ Disables every customisation — `CLAUDE.md`, skills, plugins, hooks, MCP server
 
 It has built-in access to its own documentation. For "does this flag exist," "what changed in this version," or "why isn't my hook firing," asking directly is usually faster than searching — and it can read your actual config while it answers.
 
-→ [Module 16](../modules/module-16-staying-sharp.md)
+→ [Module 15](../modules/module-15-beyond-claude-code.md)
 
 ---
 

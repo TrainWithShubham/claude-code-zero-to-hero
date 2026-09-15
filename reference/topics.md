@@ -1,36 +1,6 @@
 # Topic index
 
-Find the module that covers a concept. Organised by what you're trying to do, then alphabetically.
-
----
-
-## By what you're trying to do
-
-| I want to… | Go to |
-|---|---|
-| Understand what Claude Code actually is | [1 — Agentic era](../modules/module-01-agentic-era.md) |
-| Write prompts that work | [2 — Prompt engineering](../modules/module-02-prompt-engineering.md) |
-| Install it, or pick a surface | [3 — Installing everywhere](../modules/module-03-installing-everywhere.md) |
-| Understand the tools and sandboxing | [4 — Agentic loop and tools](../modules/module-04-agentic-loop-tools.md) |
-| Give Claude a finish line it keeps working toward | [2 — `/goal`](../modules/module-02-prompt-engineering.md) |
-| Stop it asking permission constantly | [5 — Permissions and memory](../modules/module-05-permissions-memory-config.md) |
-| Make it follow my project's conventions | [5 — CLAUDE.md](../modules/module-05-permissions-memory-config.md) |
-| Work on a real project without losing my mind | [6 — Planning real projects](../modules/module-06-planning-real-projects.md) |
-| Teach it a repeatable workflow | [7 — Skills and hooks](../modules/module-07-skills-commands-hooks.md) |
-| Guarantee something always happens | [7 — Hooks](../modules/module-07-skills-commands-hooks.md) |
-| Add capability without building it | [8 — Plugins](../modules/module-08-plugin-ecosystem.md) |
-| Connect my issue tracker, database, or monitoring | [9 — MCP](../modules/module-09-mcp.md) |
-| Run many agents at once | [10 — Orchestration](../modules/module-10-subagents-orchestration.md) |
-| Use it inside VS Code or JetBrains | [11 — Your IDE](../modules/module-11-every-surface.md) |
-| Use it away from my terminal | [11 — Every surface](../modules/module-11-every-surface.md) |
-| Run it from a script, with no terminal | [12 — Headless mode](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
-| Put it in CI, or review PRs | [12 — CI/CD and review](../modules/module-12-cicd-review-security.md) |
-| Use it on infrastructure, or roll it out at work | [13 — Infra, cloud, enterprise](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Build a product on it | [14 — Agent SDK](../modules/module-14-agent-sdk.md) |
-| Build something to show for it | [15 — Capstone](../modules/module-15-capstone.md) |
-| Keep up as it changes | [16 — Staying sharp](../modules/module-16-staying-sharp.md) |
-| **Fix something that's broken** | [Troubleshooting](troubleshooting.md) |
-| **Get faster, cheaper, and sharper at it** | [Power moves](power-moves.md) |
+Find the module that covers a concept. A–Z, based on what each module actually contains.
 
 ---
 
@@ -38,102 +8,82 @@ Find the module that covers a concept. Organised by what you're trying to do, th
 
 | Topic | Module |
 |---|---|
-| Admin setup, managed settings | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Agent loop (concept) | [1](../modules/module-01-agentic-era.md) |
-| Agent loop (SDK message lifecycle) | [14](../modules/module-14-agent-sdk.md) |
-| Agent SDK | [14](../modules/module-14-agent-sdk.md) |
-| Agent teams | [10](../modules/module-10-subagents-orchestration.md) |
-| Agent view | [10](../modules/module-10-subagents-orchestration.md) |
-| Amazon Bedrock, Google Cloud, Microsoft Foundry | [3](../modules/module-03-installing-everywhere.md), [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Artifacts | [15](../modules/module-15-capstone.md) |
-| Authentication, account types | [3](../modules/module-03-installing-everywhere.md) |
-| Auto memory | [5](../modules/module-05-permissions-memory-config.md) |
-| Auto mode | [5](../modules/module-05-permissions-memory-config.md) |
-| Auto-compaction thrashing | [Troubleshooting](troubleshooting.md) |
-| `--bare` mode | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
-| Bash tool | [4](../modules/module-04-agentic-loop-tools.md) |
-| Branching a session | [6](../modules/module-06-planning-real-projects.md) |
-| Channels | [9](../modules/module-09-mcp.md) |
-| Checkpointing | [6](../modules/module-06-planning-real-projects.md) |
-| Chrome integration | [11](../modules/module-11-every-surface.md) |
-| Claude apps gateway | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Claude Security plugin | [8](../modules/module-08-plugin-ecosystem.md) |
-| Claude Tag, Slack | [11](../modules/module-11-every-surface.md) |
-| CLAUDE.md — precedence and loading | [5](../modules/module-05-permissions-memory-config.md) |
-| CLAUDE.md — writing one | [2](../modules/module-02-prompt-engineering.md) |
-| `.claude/` directory | [5](../modules/module-05-permissions-memory-config.md) |
-| Code intelligence (LSP) plugins | [8](../modules/module-08-plugin-ecosystem.md) |
-| Code Review (managed GitHub App) | [12](../modules/module-12-cicd-review-security.md) |
-| Compaction | [4](../modules/module-04-agentic-loop-tools.md), [14](../modules/module-14-agent-sdk.md) |
-| Computer use | [11](../modules/module-11-every-surface.md) |
-| Context window | [4](../modules/module-04-agentic-loop-tools.md) |
-| Cost and effort tuning | [Power moves](power-moves.md), [12](../modules/module-12-cicd-review-security.md) |
-| Costs, managing | [12](../modules/module-12-cicd-review-security.md) |
-| Cross-session messaging | [10](../modules/module-10-subagents-orchestration.md) |
-| Desktop app | [11](../modules/module-11-every-surface.md) |
-| Dispatch | [11](../modules/module-11-every-surface.md) |
-| Dynamic workflows | [10](../modules/module-10-subagents-orchestration.md) |
-| Edit, Read, Write tools | [4](../modules/module-04-agentic-loop-tools.md) |
-| Effort levels | [10](../modules/module-10-subagents-orchestration.md), [14](../modules/module-14-agent-sdk.md) |
-| Enterprise rollout | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Focus view (VS Code) | [11](../modules/module-11-every-surface.md) |
-| GitHub Actions | [12](../modules/module-12-cicd-review-security.md) |
-| GitLab CI/CD | [12](../modules/module-12-cicd-review-security.md) |
-| Glob and Grep tools | [4](../modules/module-04-agentic-loop-tools.md) |
-| Goals (`/goal`) | [2](../modules/module-02-prompt-engineering.md) |
-| Headless mode (`claude -p`) | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
-| Hooks — events and exit codes | [7](../modules/module-07-skills-commands-hooks.md) |
-| Hosting agents in production | [14](../modules/module-14-agent-sdk.md) |
-| IDE MCP server (`ide`) | [11](../modules/module-11-every-surface.md) |
-| Infrastructure as Code | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Installation | [3](../modules/module-03-installing-everywhere.md) |
-| JetBrains plugin | [11](../modules/module-11-every-surface.md) |
-| JSON output, `--json-schema` | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
-| Keyboard shortcuts | [3](../modules/module-03-installing-everywhere.md) |
-| Marketplaces, creating one | [8](../modules/module-08-plugin-ecosystem.md) |
-| MCP — connecting servers | [9](../modules/module-09-mcp.md) |
-| `.mcp.json` and MCP scopes | [9](../modules/module-09-mcp.md) |
-| Memory and CPU problems | [Troubleshooting](troubleshooting.md) |
-| Mobile | [11](../modules/module-11-every-surface.md) |
-| Model lineup and pricing | [1](../modules/module-01-agentic-era.md) |
-| Monorepos and large codebases | [6](../modules/module-06-planning-real-projects.md) |
-| Multi-tenant isolation | [14](../modules/module-14-agent-sdk.md) |
-| Observability, OpenTelemetry | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Output styles | [2](../modules/module-02-prompt-engineering.md), [7](../modules/module-07-skills-commands-hooks.md) |
-| Permission modes | [5](../modules/module-05-permissions-memory-config.md) |
-| Plan mode | [6](../modules/module-06-planning-real-projects.md) |
-| Plugins — installing | [8](../modules/module-08-plugin-ecosystem.md) |
-| Prompt caching | [4](../modules/module-04-agentic-loop-tools.md) |
-| Remote Control | [11](../modules/module-11-every-surface.md) |
-| `REVIEW.md` | [12](../modules/module-12-cicd-review-security.md) |
-| ripgrep, search not finding files | [Troubleshooting](troubleshooting.md) |
-| Routines (scheduled cloud agents) | [11](../modules/module-11-every-surface.md) |
-| Rules (`.claude/rules/`), path-scoped | [5](../modules/module-05-permissions-memory-config.md) |
-| Safe mode (`--safe-mode`) | [Troubleshooting](troubleshooting.md) |
-| Sandboxing | [4](../modules/module-04-agentic-loop-tools.md) |
-| Security — the full picture | [12](../modules/module-12-cicd-review-security.md) |
-| `security-guidance` plugin | [8](../modules/module-08-plugin-ecosystem.md) |
-| Self-hosted environments | [13](../modules/module-13-infrastructure-cloud-enterprise.md) |
-| Sessions — resume, name, picker | [6](../modules/module-06-planning-real-projects.md) |
-| Settings precedence | [5](../modules/module-05-permissions-memory-config.md) |
-| Skills — writing and scoping | [7](../modules/module-07-skills-commands-hooks.md) |
-| Slash commands, custom | [7](../modules/module-07-skills-commands-hooks.md) |
-| Streaming output (`stream-json`) | [12](../modules/module-12-cicd-review-security.md#1-headless-mode--claude-code-without-a-terminal) |
-| Structured outputs | [14](../modules/module-14-agent-sdk.md) |
-| Subagents | [10](../modules/module-10-subagents-orchestration.md) |
-| Tool search (MCP) | [9](../modules/module-09-mcp.md) |
-| Ultrareview | [12](../modules/module-12-cicd-review-security.md) |
-| Verification signals | [1](../modules/module-01-agentic-era.md), [2](../modules/module-02-prompt-engineering.md) |
-| VS Code extension | [11](../modules/module-11-every-surface.md) |
-| Web sessions | [11](../modules/module-11-every-surface.md) |
-| Worktrees | [6](../modules/module-06-planning-real-projects.md), [10](../modules/module-10-subagents-orchestration.md) |
+| Agentic AI (definition, vs. generative AI) | [1](../modules/module-01-claude-and-how-it-works.md), [3](../modules/module-03-agentic-ai-systems.md) |
+| Agentic loop (perceive–act loop) | [1](../modules/module-01-claude-and-how-it-works.md), [3](../modules/module-03-agentic-ai-systems.md), [4](../modules/module-04-getting-started.md) |
+| Agent Skills — description field, invocation | [9](../modules/module-09-slash-commands-skills-subagents.md) |
+| Agent Skills — bundled, project, personal, marketplace | [9](../modules/module-09-slash-commands-skills-subagents.md) |
+| Amazon Bedrock | [4](../modules/module-04-getting-started.md) |
+| Anthropic connector directory (claude.ai/directory) | [10](../modules/module-10-mcp-foundations.md) |
+| Auto-compact | [13](../modules/module-13-prompting-strategies-multiagent.md) |
+| Auto memory | [3](../modules/module-03-agentic-ai-systems.md), [5](../modules/module-05-setup-configuration-memory.md) |
+| AWS Documentation MCP server (`awslabs/mcp`) | [10](../modules/module-10-mcp-foundations.md) |
+| Bash tool | [6](../modules/module-06-built-in-tools-codebases.md) |
+| Bug fixing (loop: locate, read, edit, verify) | [6](../modules/module-06-built-in-tools-codebases.md) |
+| CI/CD (Continuous Integration / Continuous Deployment) | [14](../modules/module-14-cicd-and-reliability.md) |
+| Claude Agent SDK | [1](../modules/module-01-claude-and-how-it-works.md) |
+| Claude apps gateway | — (not covered in the current 15 modules) |
+| Claude Console (API credits) | [4](../modules/module-04-getting-started.md) |
+| Claude Developer Platform (Claude API) | [1](../modules/module-01-claude-and-how-it-works.md) |
+| Claude GitHub App / GitHub Action (`anthropics/claude-code-action`) | [14](../modules/module-14-cicd-and-reliability.md) |
+| Claude models (Haiku, Sonnet, Opus, Fable) | [1](../modules/module-01-claude-and-how-it-works.md), [4](../modules/module-04-getting-started.md) |
+| Claude product ecosystem (claude.ai, Code, SDK, surfaces) | [1](../modules/module-01-claude-and-how-it-works.md) |
+| CLAUDE.md — precedence, scope, writing one | [5](../modules/module-05-setup-configuration-memory.md) |
+| Code review (scoping a review prompt) | [6](../modules/module-06-built-in-tools-codebases.md) |
+| Code Review (managed, automatic PR feature) | [14](../modules/module-14-cicd-and-reliability.md) |
+| Context window | [2](../modules/module-02-prompt-engineering-foundations.md) |
+| Context management (`/compact`, `/clear`) | [13](../modules/module-13-prompting-strategies-multiagent.md) |
+| Desktop app | [1](../modules/module-01-claude-and-how-it-works.md), [4](../modules/module-04-getting-started.md) |
+| Edit, Read, Write tools | [6](../modules/module-06-built-in-tools-codebases.md) |
+| Enterprise cloud providers (Bedrock, Google Cloud Agent Platform, Microsoft Foundry) | [4](../modules/module-04-getting-started.md) |
+| Error budget (SRE) | [14](../modules/module-14-cicd-and-reliability.md) |
+| Few-shot prompting | [2](../modules/module-02-prompt-engineering-foundations.md) |
+| Function calling / tool use (concept) | [3](../modules/module-03-agentic-ai-systems.md) |
+| Generative AI | [1](../modules/module-01-claude-and-how-it-works.md) |
+| Git operations as plain-language prompts | [6](../modules/module-06-built-in-tools-codebases.md) |
+| Glob and Grep tools | [6](../modules/module-06-built-in-tools-codebases.md) |
+| Hacker News MCP servers | [10](../modules/module-10-mcp-foundations.md) |
+| Hooks — events (`PreToolUse`, `PostToolUse`, `SessionStart`, `SessionEnd`, `UserPromptSubmit`, `Stop`) | [11](../modules/module-11-automation-subagents-plugins.md) |
+| Hooks — handler types (`command`, `http`, `mcp_tool`, `prompt`, `agent`) | [11](../modules/module-11-automation-subagents-plugins.md) |
+| Hooks — enforcing sub-agent verification | [12](../modules/module-12-url-shortener-project.md) |
+| Installation (native installer, Homebrew, WinGet) | [4](../modules/module-04-getting-started.md) |
+| Login and authentication (subscription, Console, enterprise) | [4](../modules/module-04-getting-started.md) |
+| Machine learning (definition) | [1](../modules/module-01-claude-and-how-it-works.md) |
+| MCP — clients, servers, transports (stdio, HTTP, SSE) | [10](../modules/module-10-mcp-foundations.md) |
+| MCP — scopes (local, project, user) and `.mcp.json` | [10](../modules/module-10-mcp-foundations.md) |
+| MCP — finding and installing servers | [10](../modules/module-10-mcp-foundations.md) |
+| Marketplaces (`claude-plugins-official`, `claude-community`, private) | [9](../modules/module-09-slash-commands-skills-subagents.md), [11](../modules/module-11-automation-subagents-plugins.md) |
+| Model family and pricing tiers | [1](../modules/module-01-claude-and-how-it-works.md) |
+| Ollama / local models (third-party integration) | [4](../modules/module-04-getting-started.md) |
+| Parallel sub-agents | [13](../modules/module-13-prompting-strategies-multiagent.md) |
+| Permission modes (`default`/Manual, `acceptEdits`, `plan`, `auto`, `dontAsk`, `bypassPermissions`) | [5](../modules/module-05-setup-configuration-memory.md), [8](../modules/module-08-executing-and-building.md) |
+| Persona prompting | [13](../modules/module-13-prompting-strategies-multiagent.md) |
+| Plan mode | [5](../modules/module-05-setup-configuration-memory.md), [7](../modules/module-07-planning-a-project.md) |
+| Plugin manifest (`.claude-plugin/plugin.json`) | [11](../modules/module-11-automation-subagents-plugins.md) |
+| Plugin monitors (`monitors/monitors.json`) | [11](../modules/module-11-automation-subagents-plugins.md) |
+| Plugin namespacing (`/plugin-name:skill-name`) | [11](../modules/module-11-automation-subagents-plugins.md) |
+| Plugins — installing, testing locally | [9](../modules/module-09-slash-commands-skills-subagents.md), [11](../modules/module-11-automation-subagents-plugins.md) |
+| Prompt engineering — clear instructions, structure, iteration | [2](../modules/module-02-prompt-engineering-foundations.md) |
+| Prompt structure (XML-style tags, breaking tasks into steps) | [2](../modules/module-02-prompt-engineering-foundations.md) |
+| Requirements vs. features vs. tech stack | [7](../modules/module-07-planning-a-project.md) |
+| Rule-based AI (definition) | [1](../modules/module-01-claude-and-how-it-works.md) |
+| Settings files and precedence (managed, CLI, project local, shared project, user) | [5](../modules/module-05-setup-configuration-memory.md) |
+| SLI / SLO / SLA | [14](../modules/module-14-cicd-and-reliability.md) |
+| Site Reliability Engineering (SRE) | [14](../modules/module-14-cicd-and-reliability.md) |
+| Slash commands (relationship to skills) | [9](../modules/module-09-slash-commands-skills-subagents.md) |
+| SSRF (server-side request forgery) risk in a redirect service | [12](../modules/module-12-url-shortener-project.md) |
+| Sub-agents — definition, frontmatter, tool restriction | [9](../modules/module-09-slash-commands-skills-subagents.md), [13](../modules/module-13-prompting-strategies-multiagent.md) |
+| Sub-agents — as standing automation | [11](../modules/module-11-automation-subagents-plugins.md) |
+| Sub-agents — built-in (Explore, Plan, General-purpose) | [9](../modules/module-09-slash-commands-skills-subagents.md) |
+| Task tracking file pattern (`TASKS.md`) | [8](../modules/module-08-executing-and-building.md) |
+| Testing agent / verification agent / push agent workflow | [12](../modules/module-12-url-shortener-project.md) |
+| Token (definition, tokenization) | [2](../modules/module-02-prompt-engineering-foundations.md) |
+| URL shortener project architecture | [12](../modules/module-12-url-shortener-project.md) |
+| Vercel deployment | [14](../modules/module-14-cicd-and-reliability.md) |
 
 ---
 
 ## The three ideas the whole course rests on
 
-If you only remember three things:
-
-1. **Give it a way to verify.** Without a check it can run, "looks done" is the only signal available — and you become the verification loop. → [Module 1](../modules/module-01-agentic-era.md)
-2. **Context is the constraint.** Performance degrades as the window fills. Almost every technique is about getting the right information in and keeping the wrong information out. → [Module 2](../modules/module-02-prompt-engineering.md), [Module 4](../modules/module-04-agentic-loop-tools.md)
-3. **Guidance is not enforcement.** CLAUDE.md is advisory, settings are enforced by the client, hooks fire before everything. If a rule matters, it's a hook. → [Module 7](../modules/module-07-skills-commands-hooks.md)
+1. **Give it a way to verify.** Without a check it can run, "looks done" is the only signal available. → [Module 3](../modules/module-03-agentic-ai-systems.md), [Module 12](../modules/module-12-url-shortener-project.md)
+2. **Context is the constraint.** Being deliberate about what goes into a prompt, and managing context as a session runs long, is a core skill, not an afterthought. → [Module 2](../modules/module-02-prompt-engineering-foundations.md), [Module 13](../modules/module-13-prompting-strategies-multiagent.md)
+3. **Guidance is not enforcement.** CLAUDE.md is advisory context; `settings.json` permissions and hooks are what actually gets enforced. → [Module 5](../modules/module-05-setup-configuration-memory.md), [Module 11](../modules/module-11-automation-subagents-plugins.md)

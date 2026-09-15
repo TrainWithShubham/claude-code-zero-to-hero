@@ -1,26 +1,26 @@
 # CLAUDE.md — Claude Code: Zero To Hero (Course Production Repo)
 
 ## What this repo is
-Source content for **"Claude Code: Zero To Hero"** — a TrainWithShubham course (English channel, trainwithshubham.ai) teaching Claude Code to Developers, DevOps, Cloud, and SRE engineers. Self-paced, recorded format, 16 modules across 4 phases, with a two-track capstone (general dev vs. DevOps/SRE).
+Source content for **"Claude Code: Zero To Hero"** — a TrainWithShubham course (English channel, trainwithshubham.ai) teaching Claude Code to Developers, DevOps, Cloud, and SRE engineers. Self-paced, recorded format, 15 modules across 4 phases, ending in a single applied-project + careers module (no split tracks).
 
-This repo holds the **written source material**: the sixteen module files, the syllabus, a condensed quick reference, and (later) generated PDF study guides. It does not hold video files or editing project files.
+This repo holds the **written source material**: the fifteen module files, the syllabus, a condensed quick reference, and (later) generated PDF study guides. It does not hold video files or editing project files.
 
 ## Structure
 ```
-README.md                   # Front door — module index with links to all 16
-modules/                    # THE CONTENT. Sixteen module files, one per module.
+README.md                   # Front door — module index with links to all 15
+modules/                    # THE CONTENT. Fifteen module files, one per module.
                             # Source of truth for all course material.
                             # Each ends with a <!-- nav --> prev/next footer.
 reference/
   topics.md                 # A–Z concept index → module. Add a row for any new concept
   commands.md               # Every slash command, CLI flag, env var → module
-  quick-reference.md        # All 16 modules condensed. Derived from modules/ —
+  quick-reference.md        # All 15 modules condensed. Derived from modules/ —
                             # when you change a module, update the matching entry here
   troubleshooting.md        # Symptom → cause → fix. Deliberately NOT a module:
                             # it's lookup material, read when something is broken
   power-moves.md            # Compound techniques that span several modules, plus
-                            # anti-patterns. Also not a module — it presumes all 16
-  syllabus.md               # Chapter-level outline of all 16 modules
+                            # anti-patterns. Also not a module — it presumes all 15
+  syllabus.md               # Chapter-level outline of all 15 modules
 labs/                       # Spec for the practice repo the exercises assume
 ```
 
@@ -53,8 +53,8 @@ Every file in `modules/` follows the same shape:
    HTML comments are stripped before markdown renders, so learners never see it, and tooling can grep it. Update `last_verified` whenever you re-check a module's facts.
 2. **The `# Module N — Title` heading**, then straight into content. No phase labels, no "verified on" banners, no "this may be outdated" hedging in the body — learners should only read what's useful to them.
 3. **Two density levels**, decided per module:
-   - **Deep-dive** (Modules 4, 5, 7, 9, 10, 14): per-chapter *concept → try it yourself → common pitfalls → key takeaways*. These are the hands-on modules where a learner is at a keyboard.
-   - **Reference** (all others): denser notes, 3–8 bullets per topic, tables where they help. Conceptual and enumerative modules don't need "try it yourself" blocks.
+   - **Deep-dive** (Modules 4, 5, 6, 7, 8, 9, 10, 12, 13, 14): per-chapter *concept → try it yourself → common pitfalls → key takeaways*. These are the hands-on modules where a learner is at a keyboard.
+   - **Reference** (Modules 1, 2, 3, 11, 15): denser notes, 3–8 bullets per topic, tables where they help. Conceptual and enumerative modules don't need "try it yourself" blocks.
 
 ## Content rules — read before editing any module content
 1. **Audience is learners first.** Every note should make sense to someone who missed a sentence in the video and is reading this to catch up — not just a memory-jog for the instructor. Full sentences over cryptic fragments; explain the "why," not just the command.
@@ -65,12 +65,12 @@ Every file in `modules/` follows the same shape:
 6. **No AI-sounding language.** Practitioner voice, concrete, no filler phrases like "in today's fast-paced world" or generic transition sentences.
 
 ## Course structure reference (see reference/syllabus.md for full detail)
-- **Phase 1 (Modules 1–3):** Zero → Comfortable — fundamentals, prompting for agents, install, first session
-- **Phase 2 (Modules 4–9):** Comfortable → Productive — agentic loop, permissions, planning, skills/hooks, plugins, MCP
-- **Phase 3 (Modules 10–13):** Productive → Advanced — multi-agent orchestration, every surface, CI/CD & security, infra/cloud/enterprise
-- **Phase 4 (Modules 14–16):** Advanced → Hero — Agent SDK, two-track capstone, staying current
+- **Phase 1 (Modules 1–3):** Foundations — how AI became agentic, prompt engineering, how an AI agent works
+- **Phase 2 (Modules 4–9):** Core Skills — install and configure Claude Code, built-in tools, planning and executing a real project, slash commands/skills/sub-agents
+- **Phase 3 (Modules 10–13):** Advanced — MCP, hooks/plugins/automation agents, the URL shortener capstone project, multi-agent prompting architecture
+- **Phase 4 (Modules 14–15):** Production & Beyond — CI/CD and reliability, careers and what's next
 
-Everyone takes Modules 1–14; Module 15 splits into Track A (general dev) and Track B (DevOps/SRE).
+There is one linear path through all 15 modules — no split tracks.
 
 ## What's next for this repo
 Two planned directions, both described in `production/distribution-plan.md`:
@@ -84,5 +84,4 @@ Two planned directions, both described in `production/distribution-plan.md`:
 - Don't add instructor-only production notes (filming checklists, B-roll cues, runtimes) to anything in `modules/`. That content lives in `production/instructor/`.
 - Don't put phase labels, verification banners, or staleness warnings in module bodies — metadata goes in the HTML comment on line 1.
 - Don't invent Claude Code commands, flags, or version numbers that haven't been checked against current docs.
-- Don't merge the two capstone tracks (Module 15) into one — they're intentionally separate for the general-dev vs. DevOps/SRE audience split.
 - Don't let `reference/quick-reference.md` and `modules/` drift. If you can only update one, update the module and note that the quick reference is behind.

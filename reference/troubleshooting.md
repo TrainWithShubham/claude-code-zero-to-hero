@@ -41,7 +41,7 @@ Run `/context` first. There are only three possibilities, and they need differen
 
 **3. A subagent ignored it.** The built-in **Explore and Plan agents skip `CLAUDE.md` entirely.** Restate the instruction in your delegating prompt. Custom subagents do load it — but critical instructions belong in the agent file body, which becomes its system prompt.
 
-And the distinction Module 7 makes: `CLAUDE.md` is for "we do it this way here." If something must *never* happen, that's a permission rule or a hook, not a memory file.
+And the distinction Module 5 makes: `CLAUDE.md` is for "we do it this way here." If something must *never* happen, that's a permission rule or a hook, not a memory file.
 
 ---
 
@@ -201,4 +201,4 @@ For account, billing, or subscription problems, contact Anthropic support instea
 
 ---
 
-**Related:** [Command reference](commands.md) · [Topic index](topics.md) · [Module 5 — permissions, memory, config](../modules/module-05-permissions-memory-config.md) · [Module 7 — hooks](../modules/module-07-skills-commands-hooks.md) · [Module 9 — MCP](../modules/module-09-mcp.md)
+**Related:** [Command reference](commands.md) · [Topic index](topics.md) · [Module 5 — setup, configuration and memory](../modules/module-05-setup-configuration-memory.md) · [Module 11 — hooks and automation](../modules/module-11-automation-subagents-plugins.md) · [Module 10 — MCP foundations](../modules/module-10-mcp-foundations.md)
