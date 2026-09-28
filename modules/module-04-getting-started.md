@@ -1,4 +1,4 @@
-<!-- module: 4 | phase: 2 | format: deep-dive | last_verified: 2026-09-15 -->
+<!-- module: 4 | phase: 2 | format: deep-dive | last_verified: 2026-09-28 -->
 # Module 4 — Getting Started with Claude Code
 
 ## Chapter 1: What Claude Code Is and Where to Use It
@@ -94,6 +94,8 @@ export ANTHROPIC_BASE_URL=http://localhost:11434
 `ANTHROPIC_BASE_URL` is the important one — it redirects every request Claude Code would normally send to Anthropic toward your local Ollama server instead. From there you run `claude --model <model-name>` (for example `qwen3.5`) and Claude Code behaves as it always does: chat, file edits, command execution, tool calling — against whichever open-weight model Ollama is serving.
 
 This is genuinely free once the model is downloaded, since nothing leaves your machine and there's no per-token billing. It is not a drop-in replacement for the hosted experience, though: Ollama's own docs note that web search and some of the finer tool controls need extra setup, and cloud-hosted models routed through Ollama have reduced feature support compared to talking to Claude directly. Pick a model with enough context for your repository — the guidance is 64k+ context for anything beyond a small project — since local models vary widely in how much they can hold in one session.
+
+For this course, a Claude subscription is the recommended default — it's the path every module assumes and where results are most consistent. Treat Ollama as a fallback for practicing the mechanics without a subscription, not an equivalent setup: it needs real local compute (a decent GPU or a lot of RAM to run a model with enough context to be useful) and responses are noticeably slower than a hosted session, since you're waiting on your own machine's inference speed instead of Anthropic's infrastructure.
 
 **Try it yourself**
 

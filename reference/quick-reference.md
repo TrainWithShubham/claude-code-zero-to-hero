@@ -84,6 +84,7 @@ A quick-reference companion for the full course. Each topic gets a bit more than
 - Ollama (a separate, third-party tool) documents its own integration at `docs.ollama.com/integrations/claude-code` — it runs a local server that mimics the Anthropic API shape Claude Code already speaks.
 - Quick path: `ollama launch claude`. Manual path: set `ANTHROPIC_AUTH_TOKEN=ollama`, `ANTHROPIC_API_KEY=""`, `ANTHROPIC_BASE_URL=http://localhost:11434`, then run `claude --model <name>`.
 - Free once a model is downloaded (no per-token billing, nothing leaves your machine), but expect reduced feature support (web search, some tool controls) versus a hosted session.
+- Best results still come from a Claude subscription — the recommended default for this course. Ollama is a fallback for practicing mechanics, and needs real local compute (GPU/RAM) plus patience: responses are noticeably slower than a hosted session.
 
 ---
 
